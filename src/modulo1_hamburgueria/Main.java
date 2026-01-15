@@ -1,3 +1,5 @@
+package modulo1_hamburgueria;
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
