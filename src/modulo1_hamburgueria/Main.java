@@ -22,14 +22,10 @@ public class Main {
         boolean ContinuarPedindo = true;
 
         while (ContinuarPedindo) {
-            System.out.println("Nós temos essas opcoes em nosso menu: ");
-            System.out.println("1: Hamburguer com molho especial da casa, uma coca cola de 500ml e batata grande. R$ 35,90");
-            System.out.println("2: Pizza de calabresa e 4 queijos, coca cola 1 litro e batata pequena. R$45,90");
-            System.out.println("3: Sushi hotroll de salmao (10 pecas), com molho tare e molho especial do chefe. R$ 25,90");
-            System.out.println("Escolha a opcao que deseja: ");
+
+            mostrarMenu();
 
             int pedido = scanner.nextInt();
-
             switch (pedido) {
                 case 1:
                     System.out.println("Voce escolheu a nossa primeira opcao, nossa cozinha já está avisada e assim que seu pedido for concluido iremos chamar pelo nome na tela, muito obrigado pela preferencia e volte sempre :)");
@@ -55,16 +51,45 @@ public class Main {
 
             if (resposta == 2) {
                 ContinuarPedindo = false;
-                System.out.println("- Nota Fiscal: ");
-                for (String item : carrinho) {
-                    System.out.println("- " + item);
-                }
-                System.out.printf("O valor final do pedido ficou: R$ %.2f %n ", total);
-                System.out.println("Pedido encerrado. Obrigado pela preferencia " + nome + "! Volte sempre.");
+
+                imprimirNotaFiscal(carrinho, total);
+
+                System.out.println("Qual o valor em dinheiro entregue pelo cliente?");
+                double valorPago = scanner.nextDouble();
+
+                double trocoFinal = calcularTroco(total, valorPago);
+
+                System.out.printf("O troco a ser devolvido é: R$ %.2f %n", trocoFinal);
+
+                System.out.println("Pedido encerrado. Obrigado " + nome + ", volte sempre!");
 
             }
         }
 
         scanner.close();
     }
+
+    public static void mostrarMenu () {
+        System.out.println("Nós temos essas opcoes em nosso menu: ");
+        System.out.println("1: Hamburguer com molho especial da casa, uma coca cola de 500ml e batata grande. R$ 35,90");
+        System.out.println("2: Pizza de calabresa e 4 queijos, coca cola 1 litro e batata pequena. R$45,90");
+        System.out.println("3: Sushi hotroll de salmao (10 pecas), com molho tare e molho especial do chefe. R$ 25,90");
+        System.out.println("Escolha a opcao que deseja: ");
+    }
+
+    public static void imprimirNotaFiscal (ArrayList<String> listaDeItens, double valorFinal) {
+        for (String item: listaDeItens) {
+            System.out.println("- " + item);
+        }
+        System.out.printf("Valor total: R$ %.2f %n", valorFinal);
+        System.out.println("-------------------");
+
+    }
+
+    public static double calcularTroco (double valorDoPedido, double valorEntregue) {
+        double troco = valorEntregue - valorDoPedido;
+
+        return troco;
+    }
 }
+
