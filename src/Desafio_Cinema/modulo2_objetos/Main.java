@@ -17,7 +17,7 @@ public class Main {
         Filme filme2 = new Filme();
 
         filme2.setNome("Homem Aranha");
-        filme2.setGenero("Ficcao");
+        filme2.setGenero("Aventura");
         filme2.setPreco(35.00);
 
         System.out.println("--- Precos Originais ---");

@@ -24,7 +24,7 @@ public class Filme {
     }
 
     void exibirFichaTecnica() {
-        System.out.println("----- Ficha do Filme -----");
+        System.out.println("------ Ficha do Filme ------");
         System.out.println("Titulo do filme: " + nome);
         System.out.println("Genero do filme: " + genero);
 
